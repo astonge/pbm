@@ -45,6 +45,6 @@ app.get('/bc/:click_id', function(req, res) {
     res.redirect('/');
 });
 
-app.listen(3000, function() {
-    console.log('Professional Banner Manager Servering on port 3000');
+app.listen(3123, function() {
+    console.log('Professional Banner Manager Servering on port 3123');
 });
