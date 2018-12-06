@@ -9,38 +9,47 @@ import '../css/App.css';
 class QuickBanner extends Component {
   constructor() {
     super();
+    this.bus_names = [];
     this.state = {
       loading: false,
-      zone: {}
+      advertisers: {}
     };
   }
 
   componentDidMount() {
-    this.setState({loading: true});
-    fetch("https://swapi.co/api/people/13/")
+    fetch("http://127.0.0.1:3123/advertisers/")
       .then(response => response.json())
       .then(data =>  {
-          this.setState({
-            loading: false,
-            zone: data
-          })
-      });
-      console.log(this.state.zone);
+        this.setState({
+          loading: false,
+          advertisers: data
+        })
+    });
+    this.setState({loading: true});
+  }
+
+  renderAdvertiserList() {
+    let items = [];
+    if(this.state.advertisers.results) {
+      this.state.advertisers.results.map(function(name,id) {
+        items.push(<option value={id}>{name.name}</option>);
+      })
+    }
+    return items;
   }
 
   render() {
-    const placeholder = this.state.loading ? "loading..." : this.state.zone.name;
     return (
       <div>
         <form>
         <FormGroup>
           <FormControl componentClass="select" placeholder="select">
-            <option value="select">Advertiser</option>
+            <option value="select">Select Advertiser</option>
+            {this.renderAdvertiserList()}
           </FormControl>
           <br/>
           <FormControl componentClass="select" placeholder="select">
-            <option value="select">Zone</option>
-            <option value="opt1">{placeholder}</option>
+            <option value="select">Select Zone</option>
           </FormControl>
           <br/>
         </FormGroup>

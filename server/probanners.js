@@ -1,11 +1,49 @@
 var express = require('express');
 var app = express();
+var advertiserArray = { 
+    count:"2", 
+    results: [ 
+        {
+            name:"Bark Park",
+            id:"0"
+        },
+        {
+            name:"Vernon Co-op",
+            id:"1"
+        }, 
+        {
+            name:"Business 2",
+            id:"2"
+        }
+    ] 
+};
 
-app.set("view engine","ejs");
-app.use(express.static('public'));
-// app.get('/', function(req, res) {
-//     res.send('Hello World');
-// });
+
+// app.use(express.static('public'));
+
+// CORS - allow
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
+
+app.get('/advertisers/', function(req, res) {
+    // TODO: get advertisers from database
+    res.setHeader('Content-Type','application/json');
+    res.jsonp(advertiserArray);
+});
+
+app.get('/advertiser/:id', function(req,res) {
+    // TODO: get advertisers from database
+    var advert = {
+        "name":"Bark Park FTW"
+    };
+
+    res.setHeader('Content-Type','application/json');
+    res.jsonp(advert);
+    console.log(advert);
+});
 
 app.get('/b/:type', function(req, res) {
 
