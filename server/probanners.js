@@ -18,6 +18,15 @@ var advertiserArray = {
     ] 
 };
 
+var zoneArray = {
+    count:"2",
+    results: [
+        {id:"home/leaderboard",name:"Leaderboard",short_name:"LB"},
+        {id:"home/mediumrec",name:"Medium Rec", short_name: "MR"},
+        {id:"home/topbutton",name:"Top Button", short_name:" TB"}
+    ]
+};
+
 
 // app.use(express.static('public'));
 
@@ -32,6 +41,11 @@ app.get('/advertisers/', function(req, res) {
     // TODO: get advertisers from database
     res.setHeader('Content-Type','application/json');
     res.jsonp(advertiserArray);
+});
+
+app.get('/zones/', function(req, res) {
+    res.setHeader('Content-Type','application/json');
+    res.jsonp(zoneArray);
 });
 
 app.get('/advertiser/:id', function(req,res) {
