@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './css/App.css';
+
 import Header from './comp/Header';
 import QuickBanner from './comp/QuickBanner';
 import ActiveBanners from './comp/ActiveBanners';
@@ -7,15 +8,13 @@ import ActiveBanners from './comp/ActiveBanners';
 import Grid from 'react-bootstrap/lib/Grid';
 import Row from 'react-bootstrap/lib/Row';
 import Col from 'react-bootstrap/lib/Col';
-import ListGroup from 'react-bootstrap/lib/ListGroup';
-import ListGroupItem from 'react-bootstrap/lib/ListGroupItem';
-import Label from 'react-bootstrap/lib/Label';
 
 class App extends Component {
 
   constructor() {
     super();
     this.state = {
+      show: false,
       advertisers: {},
       zones: {}
     };
@@ -69,5 +68,7 @@ class App extends Component {
     );
   }
 }
+
+
 
 export default App;

@@ -8,22 +8,28 @@ import '../css/App.css';
 class ActiveBanners extends Component {
   constructor(props) {
     super(props);
-    // this.setState = {
-    //   loading: false
-    // };
   }
 
   componentDidMount() {
-    console.log("Yes");
-    console.log(this.props.zones);
+  }
+
+  renderZoneList() {
+    let zone_items = [];
+    this.props.zones.results.map(function(zone) {
+      zone_items.push(<ListGroupItem>{zone.short_name}</ListGroupItem>);
+    })
+    return zone_items;
   }
 
   render() {
     return (
       <ListGroup>
-        <ListGroupItem>LB1 <Label>10</Label></ListGroupItem>
+        {
+          this.renderZoneList()
+        }
+        {/* <ListGroupItem>LB1 <Label>10</Label></ListGroupItem>
         <ListGroupItem>MR1 <Label>4</Label></ListGroupItem>
-        <ListGroupItem>TB <Label>2</Label></ListGroupItem>
+        <ListGroupItem>TB <Label>2</Label></ListGroupItem> */}
       </ListGroup>
     );
   }
