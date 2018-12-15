@@ -3,13 +3,12 @@
   color:white;
 }
 .App {
-  text-align: center;
+  background-color:#303030;
 }
-p {
-  color:white;
-}
-h2,h3,h4 {
-  color:white;
+
+p,
+h1,h2,h3,h4 {
+  color:#fff;
 }
 
 .App-logo {
@@ -18,7 +17,7 @@ h2,h3,h4 {
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color:#303030;
   min-height: 100vh;
   display: flex;
   flex-direction: column;

@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import ListGroup from 'react-bootstrap/lib/ListGroup';
 import ListGroupItem from 'react-bootstrap/lib/ListGroupItem';
-import Label from 'react-bootstrap/lib/Label';
 
 import '../css/App.css';
 
@@ -9,10 +8,7 @@ class ActiveBanners extends Component {
   constructor(props) {
     super(props);
   }
-
-  componentDidMount() {
-  }
-
+  
   renderZoneList() {
     let zone_items = [];
     this.props.zones.results.map(function(zone) {
