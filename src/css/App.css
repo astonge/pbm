@@ -31,6 +31,16 @@ h1,h2,h3,h4 {
   color: #61dafb;
 }
 
+a {
+  color:#FFF;
+  text-decoration: none;
+}
+a:hover,
+a:focus {
+  text-decoration: none;
+  color:#FFF;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

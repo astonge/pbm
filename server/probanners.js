@@ -97,6 +97,11 @@ app.get('/bc/:click_id', function(req, res) {
     res.redirect('/');
 });
 
+app.post('/', function(req, res) {
+    console.log("/ CLICKED ", req.param.id);
+    res.send('CLICKED');
+});
+
 app.listen(3123, function() {
     console.log('Professional Banner Manager Servering on port 3123');
 });

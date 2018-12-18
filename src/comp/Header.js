@@ -30,7 +30,13 @@ class Header extends Component {
         <Navbar.Header><Navbar.Brand><Link to="/">PBM</Link> </Navbar.Brand><Navbar.Toggle/></Navbar.Header>
         <Navbar.Collapse>
           <Nav>
-            <NavItem href="/newzone">New Zone</NavItem>
+            <NavItem><Link to="/newzone">New Zone</Link></NavItem>
+          </Nav>
+          <Nav>
+            <NavItem><Link to="/newadvertiser">New Advertiser</Link></NavItem>
+          </Nav>
+          <Nav>
+            <NavItem><Link to="/newad">New Ad</Link></NavItem>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
