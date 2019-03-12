@@ -1,4 +1,6 @@
 var express = require('express');
+var bodyParser = require('body-parser');
+
 var app = express();
 var advertiserArray = { 
     count:"2", 
@@ -31,6 +33,10 @@ var zoneArray = {
 // app.use(express.static('public'));
 
 // CORS - allow
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+app.use(bodyParser.json());
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -98,7 +104,8 @@ app.get('/bc/:click_id', function(req, res) {
 });
 
 app.post('/', function(req, res) {
-    console.log("/ CLICKED ", req.param.id);
+    // console.log(req);
+    console.log("/ CLICKED ", req.body.id);
     res.send('CLICKED');
 });
 

@@ -6,39 +6,38 @@ import Form from 'react-bootstrap/lib/Form';
 import FormGroup from 'react-bootstrap/lib/FormGroup';
 import FormControl from 'react-bootstrap/lib/FormControl';
 import Button from 'react-bootstrap/lib/Button';
-import "../css/App.css";
 
 export default class NewZone extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      loading: false
+      loading: false,
+      inputValue: "Testing"
     };
     this.createZone = this.createZone.bind(this);
+    this.updateInputValue = this.updateInputValue.bind(this);
+  }
+
+  updateInputValue(e) {
+    // console.log("Update: "+e.target.value);
+    this.setState({inputValue: e.target.value});
   }
 
   createZone(e) {
     e.preventDefault();
-    var data = {id:'WHO YOU FIGHTING BEEECH'};
-    
-    console.log("Clicked");
+    var data = {id:this.state.inputValue};
+
     fetch('http://127.0.0.1:3123/', {
       method: 'POST',
-      headers: {
-        "Content-Type":"application/json"
-      },
+      headers: {"Content-Type":"application/json"},
       cache: "reload",
       referrer: "no-referrer",
-      body: JSON.stringify(data),
-      // credentials: 'include',
-      // redirect: 'follow',
+      body: JSON.stringify(data)
     })
     .then((res) => res.json())
     .then((data) => console.log(data))
     .catch((err) => console.log(err));
-    // .then(response => console.log('Cowboy I love you.. yeaaauh'))
-    // .catch(error => console.error('WHAT THE FUCK RICHARD'));
   };
   
 
@@ -56,7 +55,10 @@ export default class NewZone extends Component {
                 <h4 className="form-label">Name</h4>
               </Col>
               <Col sm={10}>
-                <FormControl type="text" placeholder="Advertiser Name"/>
+                <FormControl
+                  onChange={this.updateInputValue} 
+                  type="text" 
+                  placeholder="Advertiser Name"/>
               </Col>
             </FormGroup>
             
