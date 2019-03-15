@@ -52,6 +52,10 @@ class QuickBanner extends Component {
             {this.renderZoneList()}
           </FormControl>
           <br/>
+          <FormControl componentClass="select" placeholder="select">
+            <option value="select">Number of Weeks</option>
+            <option value="1">1 Week</option>
+          </FormControl>
         </FormGroup>
         </form>
       </div>

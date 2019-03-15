@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import Grid from 'react-bootstrap/lib/Grid';
 import Row from 'react-bootstrap/lib/Row';
 import Col from 'react-bootstrap/lib/Col';
-// import ActiveBanners from '../comp/ActiveBanners';
+import FormGroup from 'react-bootstrap/lib/FormGroup';
+import FormControl from 'react-bootstrap/lib/FormControl';
+import ActiveBanners from '../comp/ActiveBanners';
 import QuickBanner from '../comp/QuickBanner';
 import "../css/App.css";
 
@@ -39,12 +41,24 @@ export default class Home extends Component {
   render() {
     return (
       <Grid>
-        <h2 className="page-title">Professional Banner Manager</h2>
+        <Row className="show-grid">
+          <Col sx={6} md={6}>
+            <h2 className="page-title">Professional Banner Manager</h2>
+          </Col>
+          <Col sx={6} md={6}>
+          <form>
+            <FormGroup id="home-top-search">
+              <FormControl type="email" placeholder="Search Advertisers, Banners, Zones, etc.." />
+            </FormGroup>
+          </form>
+          </Col>
+        </Row>
+        
         <hr/>
         <Row className="show-grid">
           <Col sx={12} md={4}>
             <h2>Active Banners</h2>
-            {/* <ActiveBanners/> */}
+            <ActiveBanners advertisers={this.state.advertisers} />
           </Col>
           <Col sx={12} md={4}>
             <h2>Quick Creation</h2>

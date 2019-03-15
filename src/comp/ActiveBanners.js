@@ -7,21 +7,34 @@ import '../css/App.css';
 class ActiveBanners extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      advertisers: {}
+    };
   }
+
+  componentDidMount() {
+    fetch("http://127.0.0.1:3123/advertisers/")
+      .then(response => response.json())
+      .then(data => {this.setState({advertisers:data}) 
+    });
+  }
+
   
-  renderZoneList() {
-    let zone_items = [];
-    this.props.zones.results.map(function(zone) {
-      zone_items.push(<ListGroupItem>{zone.short_name}</ListGroupItem>);
-    })
-    return zone_items;
+  renderAdvertiserList() {
+    let ad_name_list = [];
+    if(this.props.advertisers.results) {
+      this.props.advertisers.results.map(function(business) {
+        ad_name_list.push(<ListGroupItem>{business.name}</ListGroupItem>);
+      })
+    }
+    return ad_name_list;
   }
 
   render() {
     return (
       <ListGroup>
         {
-          this.renderZoneList()
+          this.renderAdvertiserList()
         }
         {/* <ListGroupItem>LB1 <Label>10</Label></ListGroupItem>
         <ListGroupItem>MR1 <Label>4</Label></ListGroupItem>
